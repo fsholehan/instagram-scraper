@@ -9,6 +9,10 @@ const port = process.env.PORT || 8000;
 
 app.use(cors());
 
+const options = {
+  session: `sessionid=${process.env.IG_SESSION_ID}`,
+};
+
 app.get("/", (req, res) => {
   res.json("Hello");
 });
@@ -16,7 +20,7 @@ app.get("/", (req, res) => {
 app.get("/user/:username", async (req, res) => {
   const { username } = req.params;
   try {
-    const user = await instagram.getUserMeta(username, {});
+    const user = await instagram.getUserMeta(username, { options });
     res.json(user);
   } catch (error) {
     console.log(error);
@@ -26,7 +30,7 @@ app.get("/user/:username", async (req, res) => {
 app.get("/posts/:username", async (req, res) => {
   const { username } = req.params;
   try {
-    const posts = await instagram.user(username, {});
+    const posts = await instagram.user(username, { options });
     res.json(posts);
   } catch (error) {
     console.log(error);
@@ -38,7 +42,7 @@ app.get("/post/:id", async (req, res) => {
   try {
     const post = await instagram.getPostMeta(
       `https://www.instagram.com/p/${id}/`,
-      {}
+      { options }
     );
     res.json(post);
   } catch (error) {
@@ -46,10 +50,11 @@ app.get("/post/:id", async (req, res) => {
   }
 });
 
-app.get("/stories", async (req, res) => {
+app.get("/stories/:userId", async (req, res) => {
+  const { userId } = req.params;
   try {
     const posts = await getStories({
-      id: 2246858295,
+      id: userId,
       userid: 45484162383,
       sessionid: process.env.IG_SESSION_ID,
     });
@@ -60,5 +65,5 @@ app.get("/stories", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
