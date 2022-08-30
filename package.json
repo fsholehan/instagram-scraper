@@ -1,0 +1,22 @@
+{
+  "name": "ig-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "instagram-scraping": "^1.0.17",
+    "instagram-stories": "^1.2.3",
+    "instatouch": "^2.3.19",
+    "nodemon": "^2.0.19"
+  }
+}
