@@ -11,6 +11,7 @@ app.use(cors());
 
 const options = {
   session: `sessionid=${process.env.IG_SESSION_ID}`,
+  proxy: "http://Selfuadnur212:V9r1DiL@91.221.232.197:45785",
 };
 
 app.get("/", (req, res) => {
