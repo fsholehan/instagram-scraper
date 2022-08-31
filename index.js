@@ -1,7 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const instagram = require("instatouch");
-const { getStories } = require("instagram-stories");
+const {
+  getStories,
+  getUserByUsername,
+  getUserHighlights,
+} = require("instagram-stories");
 require("dotenv").config();
 const app = express();
 
@@ -60,6 +64,20 @@ app.get("/stories/:userId", async (req, res) => {
       sessionid: process.env.IG_SESSION_ID,
     });
     res.json(posts);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/user-data/:username", async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await getUserByUsername({
+      username: username,
+      userid: 45484162383,
+      sessionid: process.env.IG_SESSION_ID,
+    });
+    res.json(user);
   } catch (error) {
     console.log(error);
   }
