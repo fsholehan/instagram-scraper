@@ -7,11 +7,14 @@ const {
   getUserHighlights,
 } = require("instagram-stories");
 require("dotenv").config();
+const helmet = require("helmet");
+
 const app = express();
 
 const port = process.env.PORT || 8000;
 
 app.use(cors());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 const options = {
   session: `sessionid=${process.env.IG_SESSION_ID}`,

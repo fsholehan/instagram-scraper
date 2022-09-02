@@ -14,6 +14,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "helmet": "^6.0.0",
     "instagram-scraping": "^1.0.17",
     "instagram-stories": "^1.2.3",
     "instatouch": "^2.3.19",
