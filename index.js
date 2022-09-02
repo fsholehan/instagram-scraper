@@ -22,7 +22,6 @@ app.use(
 );
 
 const options = {
-  session: `sessionid=${process.env.IG_SESSION_ID}`,
   proxy: `http://${process.env.USER_NAME_PW}@${process.env.URL_PROXY}`,
 };
 
