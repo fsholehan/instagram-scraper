@@ -14,7 +14,12 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 app.use(cors());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(
+  helmet.crossOriginResourcePolicy({
+    policy: "cross-origin",
+    crossOriginEmbedderPolicy: false,
+  })
+);
 
 const options = {
   session: `sessionid=${process.env.IG_SESSION_ID}`,
